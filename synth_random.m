@@ -1,0 +1,1 @@
+function seq = synth_random(N, len)seq = randi(N, len, 1) - 1;
