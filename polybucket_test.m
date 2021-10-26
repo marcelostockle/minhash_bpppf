@@ -1,0 +1,1 @@
+query = 0;query = polybucket_compress(query, 1, 7)query = polybucket_compress(query, 3, 7)query = polybucket_compress(query, 5, 7)query = polybucket_compress(query, 1, 7)query = polybucket_compress(query, 1, 7)query = polybucket_compress(query, 7, 7)query = polybucket_compress(query, 1, 7)bucket = polybucket_decompress(query, 7)
