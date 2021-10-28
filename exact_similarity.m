@@ -20,4 +20,4 @@ function [similarity] =  exact_similarity(mh_count, seq, period)
     endfor
   endfor
   
-  similarity = sim_and ./ sim_or
+  similarity = sim_and ./ sim_or;
