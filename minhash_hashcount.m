@@ -1,6 +1,6 @@
 function [similarity, htable] = minhash_hashcount(mh_count, k, hash_size, period)
   
-  cols = numel(mh_count.maxind);
+  cols = numel(mh_count.sig_len);
   htable = sparse(hash_size, 1);
   sim_counts = zeros(cols, cols);
   similarity = zeros(cols, cols);
