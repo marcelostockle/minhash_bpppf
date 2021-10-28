@@ -18,13 +18,14 @@ function queue = maxheap_adjust(queue, queue_len, index, order)
   
   parent = floor((index + order - 2) / order);
   children = (order*(index - 1) + 2):(order*index + 1);
+  children = children(children <= queue_len);
   
   aux = queue(index);
   if (parent > 0 && queue(index) > queue(parent))
     queue(index) = queue(parent);
     queue(parent) = aux;
     queue = maxheap_adjust(queue, queue_len, parent, order);
-  elseif (children(end) <= queue_len)
+  elseif (!isempty(children))
     [~, maxchild] = max(queue(children));
     maxchild = children(maxchild);
     if (queue(maxchild) > queue(index))
