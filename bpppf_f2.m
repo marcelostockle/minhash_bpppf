@@ -3,8 +3,6 @@ function [mh_count_f2] = bpppf_f2(mh_count, similarity, k, period, min_sim)
   [I, J] = find(similarity >= min_sim);
   cols = numel(I);
   mh_count_f2.hash = -1 * ones(k, cols);
-  mh_count_f2.maxhash = zeros(1, cols);
-  mh_count_f2.maxind = zeros(1, cols);
   mh_count_f2.sig_len = k * ones(1, cols);
   mh_count_f2.pattern = -1 * ones(cols, period);
   mh_count_f2.similarity = zeros(1, cols);
@@ -39,6 +37,3 @@ function [mh_count_f2] = bpppf_f2(mh_count, similarity, k, period, min_sim)
     endwhile
     mh_count_f2.sig_len(i) = sig_len;
   endfor
-  
-  mh_count_f2.maxind = mh_count_f2.sig_len;
-  mh_count_f2.maxhash = mh_count_f2.hash(mh_count_f2.maxind, :);
