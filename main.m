@@ -20,4 +20,4 @@ mh_count = cell(args.period, 1);
 [similarity, htable] = minhash_hashcount(mh_count{1}, args.k, hash_size, args.period);
 mh_count{2} = bpppf_f2(mh_count{1}, similarity, args.k, args.period, args.min_sim);
 
-exact_sim = exact_similarity(mh_count{2}, seq_d, args.period);
+[exact_sim, exact_supp] = exact_similarity(mh_count{2}, seq_d, args.period);
