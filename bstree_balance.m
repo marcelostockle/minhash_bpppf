@@ -22,6 +22,11 @@ function [bstree, root] = bstree_balance(bstree, root)
       bstree.rchild(lchild) = root;
       bstree.height(root) = 1 + max(bstree.height(rchild), bstree.height(bstree.lchild(root)));
       bstree.height(lchild) = max(bstree.height(lchild), 1+bstree.height(root));
+
+      % What if the former root node no longer has any children
+      if (bstree.counts(bstree.lchild(root)) == 0 && bstree.counts(bstree.rchild(root)) == 0)
+        bstree.height(root) = 0;
+      endif
       
       root = lchild;
     else
@@ -30,6 +35,11 @@ function [bstree, root] = bstree_balance(bstree, root)
       bstree.lchild(rchild) = root;
       bstree.height(root) = 1 + max(bstree.height(lchild), bstree.height(bstree.rchild(root)));
       bstree.height(rchild) = max(bstree.height(rchild), 1+bstree.height(root));
+      
+      % What if the former root node no longer has any children
+      if (bstree.counts(bstree.lchild(root)) == 0 && bstree.counts(bstree.rchild(root)) == 0)
+        bstree.height(root) = 0;
+      endif
       
       root = rchild;
     endif

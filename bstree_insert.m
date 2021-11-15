@@ -6,8 +6,11 @@ function [bstree, root] = bstree_insert(bstree, entry, root)
   lchild = bstree.lchild(root);
   rchild = bstree.rchild(root);
   if (bstree.counts(root) == 0)
-    bstree.counts(root)++;
     bstree.tree(root) = entry;
+    bstree.counts(root)++;
+    bstree.lchild(root) = bstree.nextchildren(1);
+    bstree.rchild(root) = bstree.nextchildren(2);
+    bstree.nextchildren += 2;
     bstree.height(root) = 0;
   elseif (lchild <= bstree.size && rchild <= bstree.size)
     if (entry < bstree.tree(root))
