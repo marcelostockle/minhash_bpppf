@@ -22,7 +22,7 @@ function [mh_count_f2] = bpppf_f2(mh_count, similarity, k, period, min_sim)
     heap_a = mh_count.hash(:, I(i));
     heap_b = mh_count.hash(:, J(i));
     heapend_a = mh_count.sig_len(I(i));
-    heapend_b = mh_count.sig_len(I(i));
+    heapend_b = mh_count.sig_len(J(i));
     while (sig_len < k && heapend_a > 0 && heapend_b > 0)
       if (heap_a(1) == heap_b(1))
         sig_len++;
