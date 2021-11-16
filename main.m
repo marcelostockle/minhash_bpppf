@@ -25,6 +25,15 @@ disp("Hash count (F2)...");
 disp("Hashing F2...");
 mh_count{2} = bpppf_f2(mh_count{1}, similarity, args.k, args.period, args.min_sim);
 
-disp("Finding exact F2 similarities...");
-[exact_sim, exact_supp] = exact_similarity(mh_count{2}, seq_d, args.period);
+% disp("Finding exact F2 similarities...");
+% [exact_sim, exact_supp] = exact_similarity(mh_count{2}, seq_d, args.period);
+
+for (order = 3:args.period)
+  printf("Finding candidate superpatterns (F%d)...\n", order);
+  [subind, C] = bpppf_candidates(mh_count, order, args.symbols);
+
+  printf("Hashing F%d...\n", order);
+  [mh_count, similarity] = minhash_fplus(mh_count, order, subind);
+endfor
+
 disp("END");
